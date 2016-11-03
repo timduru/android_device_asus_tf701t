@@ -18,6 +18,16 @@ $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-he
 
 $(call inherit-product-if-exists, vendor/asus/tf701t/tf701t-vendor.mk)
 
+ifneq ($(TARGET_KERNEL_BUILT_FROM_SOURCE), true)
+# Use prebuilt kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/asus/tf701t/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+endif
+
+
 DEVICE_PACKAGE_OVERLAYS += \
     device/asus/tf701t/overlay
 
@@ -157,7 +167,6 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/permissions/asus.hardware.hall_sensor.xml:system/etc/permissions/asus.hardware.hall_sensor.xml \
     device/asus/tf701t/permissions/asus.hardware.keyboard.xml:system/etc/permissions/asus.hardware.keyboard.xml \
     device/asus/tf701t/permissions/asus.hardware.sound.maxxaudio.xml:system/etc/permissions/asus.hardware.sound.maxxaudio.xml \
-    device/asus/tf701t/asuspec/com.cyanogenmod.asuspec.xml:system/etc/permissions/com.cyanogenmod.asuspec.xml
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
@@ -186,14 +195,19 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     libnetcmdiface \
     WiFiDirectDemo \
-    com.cyanogenmod.asuspec \
-    libasuspec_jni \
     AutoParts_tfp
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
        make_ext4fs \
        setup_fs
+
+
+PRODUCT_COPY_FILES += \
+    device/asus/tf701t/libstlport/libstlport.so:system/lib/libstlport.so
+
+PRODUCT_PACKAGES += libkaticu
+
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -203,8 +217,8 @@ PRODUCT_AAPT_CONFIG := xlarge hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := tf701t
-PRODUCT_DEVICE := tf701t
-PRODUCT_MODEL := K00C
-PRODUCT_BRAND := asus
-PRODUCT_MANUFACTURER := asus
+
+
+BOOTANIMATION_RESOLUTION := KatKiss
+$(call inherit-product-if-exists, vendor/kat/common.mk)
+

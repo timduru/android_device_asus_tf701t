@@ -7,4 +7,4 @@ type sensors_config_exec, exec_type, file_type;
 type sensors_data_file, file_type, data_file_type;
 init_daemon_domain(sensors_config)
 file_type_auto_trans(sensors_config, system_data_file, sensors_data_file)
-unconfined_domain(sensors_config)
+#unconfined_domain(sensors_config)

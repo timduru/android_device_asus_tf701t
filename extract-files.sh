@@ -8,7 +8,7 @@ for FILE in `cat proprietary-files.txt`; do
     if [ ! -d $BASE/$DIR ]; then
         mkdir -p $BASE/$DIR
     fi
-    adb pull /system/$FILE $BASE/$FILE
+    rsync -v -a /system/$FILE $BASE/$FILE
 done
 
 ./setup-makefiles.sh

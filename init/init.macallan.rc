@@ -20,48 +20,17 @@ on early-init
     mkdir /persist 0764 root system
 
 on init
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage/emulated 0555 root root
-#    mkdir /Removable 0751 root sdcard_r
-
-    # External media
-    mkdir /mnt/media_rw/MicroSD 0700 media_rw media_rw
-    mkdir /mnt/media_rw/SD 0700 media_rw media_rw
-    mkdir /mnt/media_rw/USBdisk1a 0700 media_rw media_rw
-    mkdir /mnt/media_rw/USBdisk1b 0700 media_rw media_rw
-    mkdir /mnt/media_rw/USBdisk1c 0700 media_rw media_rw
-    mkdir /mnt/media_rw/USBdisk1d 0700 media_rw media_rw
-    mkdir /mnt/media_rw/USBdisk1e 0700 media_rw media_rw
-    mkdir /mnt/media_rw/USBdisk1f 0700 media_rw media_rw
-    mkdir /mnt/media_rw/USBdisk1g 0700 media_rw media_rw
-    mkdir /mnt/media_rw/USBdisk1h 0700 media_rw media_rw
-    mkdir /mnt/media_rw/USBdisk2 0700 media_rw media_rw
-    mkdir /storage/MicroSD 0700 root root
-    mkdir /storage/SD 0700 root root
-    mkdir /storage/USBdisk1a 0700 root root
-    mkdir /storage/USBdisk1b 0700 root root
-    mkdir /storage/USBdisk1c 0700 root root
-    mkdir /storage/USBdisk1d 0700 root root
-    mkdir /storage/USBdisk1e 0700 root root
-    mkdir /storage/USBdisk1f 0700 root root
-    mkdir /storage/USBdisk1g 0700 root root
-    mkdir /storage/USBdisk1h 0700 root root
-    mkdir /storage/USBdisk2 0700 root root
 
 #    mount tmpfs tmpfs /Removable mode=0751,uid=0,gid=1028
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
     export SECONDARY_STORAGE /storage/MicroSD:/storage/SD:/storage/USBdisk1a:/storage/USBdisk1b:/storage/USBdisk1c:/storage/USBdisk1d:/storage/USBdisk1e:/storage/USBdisk1f:/storage/USBdisk1g:/storage/USBdisk1h:/storage/USBdisk2
     export TOUCH_CONF_DIR /persist/touch
     export TOUCH_DATA_DIR /persist/touch
 
     # Support legacy paths
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
+
 
 on fs
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
@@ -450,8 +419,6 @@ service iprenew_eth0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
-    class late_start
 
 # bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
 service bugreport /system/bin/dumpstate -d -p -B -o /data/data/com.android.shell/files/bugreports/bugreport
@@ -462,50 +429,6 @@ service bugreport /system/bin/dumpstate -d -p -B -o /data/data/com.android.shell
 
 on property:init.svc.hciattach=stopped
     write /sys/devices/platform/reg-userspace-consumer.1/state disabled
-
-service fuse_MicroSD /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/MicroSD /storage/MicroSD
-    class late_start
-    disabled
-
-service fuse_SD /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/SD /storage/SD
-    class late_start
-    disabled
-
-service fuse_USBdisk1a /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1a /storage/USBdisk1a
-    class late_start
-    disabled
-
-service fuse_USBdisk1b /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1b /storage/USBdisk1b
-    class late_start
-    disabled
-
-service fuse_USBdisk1c /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1c /storage/USBdisk1c
-    class late_start
-    disabled
-
-service fuse_USBdisk1d /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1d /storage/USBdisk1d
-    class late_start
-    disabled
-
-service fuse_USBdisk1e /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1e /storage/USBdisk1e
-    class late_start
-    disabled
-
-service fuse_USBdisk1f /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1f /storage/USBdisk1f
-    class late_start
-    disabled
-
-service fuse_USBdisk1g /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1g /storage/USBdisk1g
-    class late_start
-    disabled
-
-service fuse_USBdisk1h /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1h /storage/USBdisk1h
-    class late_start
-    disabled
-
-service fuse_USBdisk2 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk2 /storage/USBdisk2
-    class late_start
-    disabled
 
 # Prepare TF service
 import init.tf.rc

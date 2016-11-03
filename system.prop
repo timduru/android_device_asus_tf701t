@@ -9,3 +9,6 @@ persist.logtool.gps.loglv=0
 
 # don't preload OpenGL in Zygote, the Tegra drivers do not like it
 ro.zygote.disable_gl_preload=true
+
+persist.external_drive_world_rw=1
+
