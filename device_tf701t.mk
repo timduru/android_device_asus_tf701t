@@ -205,11 +205,19 @@ PRODUCT_PACKAGES += \
        make_ext4fs \
        setup_fs
 
+PRODUCT_PACKAGES += \
+    libwpa_client \
+    hostapd \
+    dhcpcd.conf \
+    wpa_supplicant \
+
 
 PRODUCT_COPY_FILES += \
     device/asus/tf701t/libstlport/libstlport.so:system/lib/libstlport.so
 
 PRODUCT_PACKAGES += libkaticu
+
+
 
 
 PRODUCT_CHARACTERISTICS := tablet
