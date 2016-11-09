@@ -79,8 +79,8 @@ key 56    ALT_LEFT
 key 57    SPACE 
 key 58    CAPS_LOCK
 key 59    F1
-# key 60    TOUCHPAD
-# key 61    BRIGHTNESS_AUTO
+key 60    TOUCHPAD
+key 61    BRIGHTNESS_AUTO
 key 62    SETTINGS
 key 63    F5
 key 64    F6
@@ -231,7 +231,7 @@ key 208   MEDIA_FAST_FORWARD
 # key 209 "KEY_BASSBOOST"
 # key 210 "KEY_PRINT"
 # key 211 "KEY_HP"
-# key 212   CAPTURE
+key 212   CAPTURE
 key 213   MUSIC
 # key 214 "KEY_QUESTION"
 key 215   ENVELOPE
@@ -247,9 +247,10 @@ key 224   BRIGHTNESS_DOWN
 key 225   BRIGHTNESS_UP
 key 226   HEADSETHOOK
 
-# key 237     BLUETOOTH
-# key 238     WIRELESS
-# key 246     READMODE
+key 237     BLUETOOTH
+key 238     WIRELESS
+#key 246     READMODE
+
 
 key 256   BUTTON_1
 key 257   BUTTON_2
