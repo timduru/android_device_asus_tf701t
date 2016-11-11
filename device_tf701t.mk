@@ -192,6 +192,9 @@ PRODUCT_PACKAGES += \
         audio.r_submix.default \
         libaudioutils
 
+# Power
+PRODUCT_PACKAGES += power.macallan
+
 # Misc
 PRODUCT_PACKAGES += \
     librs_jni \

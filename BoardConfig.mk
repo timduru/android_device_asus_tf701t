@@ -23,6 +23,8 @@ BOARD_USES_GENERIC_AUDIO := false
 
 # Use the non-open-source parts, if they're present
 -include vendor/asus/tf701t/BoardConfigVendor.mk
+include vendor/nvidia/build/definitions.mk
+
 
 TARGET_SPECIFIC_HEADER_PATH := device/asus/tf701t/include
 
@@ -107,21 +109,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/asus/tf701t/bluetooth
 BOARD_SEPOLICY_DIRS += \
     device/asus/tf701t/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    genfs_contexts \
-    app.te \
-    bdaddwriter.te \
-    device.te \
-    drmserver.te \
-    init_shell.te \
-    file.te \
-    sensors_config.te \
-    system.te \
-    zygote.te \
-    healthd.te \
-    domain.te \
-    ueventd.te
 
 TARGET_BOOTANIMATION_PRELOAD := true
 
@@ -146,3 +133,5 @@ TARGET_GCC_VERSION_EXP := 5.4
 
 ENABLE_CPUSETS := true
 
+#TARGET_POWERHAL_VARIANT := tegra
+#NV_ANDROID_FRAMEWORK_ENHANCEMENTS := TRUE
