@@ -83,6 +83,7 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/wifi/firmware/bcm43341/fw_bcmdhd.bin:system/vendor/firmware/bcm43341/fw_bcmdhd.bin \
     device/asus/tf701t/wifi/firmware/bcm43341/fw_bcmdhd_p2p.bin:system/vendor/firmware/bcm43341/fw_bcmdhd_p2p.bin \
     device/asus/tf701t/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    device/asus/tf701t/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/asus/tf701t/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Power
