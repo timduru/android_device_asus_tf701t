@@ -84,6 +84,7 @@ ALOGI("main_power_init ");
 
 static void main_power_set_interactive(struct power_module *module, int on /*screen on */ )
 {
+ALOGI("main_power_set_interactive");
     common_power_set_interactive(module, pInfo, on);
 
     const char* state = (0 == on)?"0":"1";
@@ -164,5 +165,5 @@ struct power_module HAL_MODULE_INFO_SYM = {
 
     init: main_power_init,
     setInteractive: main_power_set_interactive,
-    powerHint: main_power_hint,
+    powerHint: no_power_hint,
 };
