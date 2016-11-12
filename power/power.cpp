@@ -90,6 +90,7 @@ ALOGI("main_power_set_interactive");
 
     const char* state = (0 == on)?"0":"1";
     sysfs_write("/sys/devices/platform/host1x/nvavp/boost_sclk", state);
+    sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/io_is_busy", state);
 
     set_min_online_cpu(on==1?interactive_mincpu_on:0, -1);
 //    if(!on) set_min_freq(interactive_freq_off);

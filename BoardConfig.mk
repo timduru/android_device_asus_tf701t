@@ -23,7 +23,7 @@ BOARD_USES_GENERIC_AUDIO := false
 
 # Use the non-open-source parts, if they're present
 -include vendor/asus/tf701t/BoardConfigVendor.mk
-include vendor/nvidia/build/definitions.mk
+#include vendor/nvidia/build/definitions.mk
 
 
 TARGET_SPECIFIC_HEADER_PATH := device/asus/tf701t/include
