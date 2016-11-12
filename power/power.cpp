@@ -66,6 +66,7 @@ ALOGI("main_power_init ");
 
     pInfo->input_devs = input_devs;
     pInfo->input_cnt = sizeof(input_devs)/sizeof(struct input_dev_map);
+    common_power_init(module, pInfo);
 
    pInfo->hint_interval[POWER_HINT_INTERACTION] = hint_interval; // less than boot time
    pInfo->hint_interval[POWER_HINT_VSYNC] = s2ns(10);
