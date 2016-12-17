@@ -25,8 +25,8 @@
 
 static struct input_dev_map input_devs[] = {
         {-1, "raydium_ts\n"},
-        {-1, "Vendor_0457_Product_0817\n"},
-        {-1, "cm3217-ls\n"}
+//        {-1, "Vendor_0457_Product_0817\n"},
+//        {-1, "cm3217-ls\n"}
        };
 static struct powerhal_info *pInfo;
 
