@@ -33,10 +33,22 @@ static struct powerhal_info *pInfo;
 //FIXME auto detect
 static int interactive_freq_on = 1912500; 
 static int interactive_freq_off = 204000; 
+static int hotplug_screen_on = 4; 
+static int hotplug_screen_off = 1; 
 static int interactive_mincpu_on = 2; 
 static int max_cpu = 4; 
 static int boost_time = ms2ns(1000); 
 static int hint_interval = ms2ns(90); 
+
+static void set_online_cpus(int num)
+{
+    char cpupath[255];
+    for(int i=0; i<max_cpu; i++)
+    {
+	sprintf(cpupath, "/sys/devices/system/cpu/cpu%i/online", i);
+        sysfs_write(cpupath, i< num ? "1":"0");
+    }
+}
 
 static void set_min_freq(int val, int timens)
 {
@@ -92,7 +104,8 @@ ALOGI("main_power_set_interactive");
     sysfs_write("/sys/devices/platform/host1x/nvavp/boost_sclk", state);
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/io_is_busy", state);
 
-    set_min_online_cpu(on==1?interactive_mincpu_on:0, -1);
+    //set_online_cpus(on==1?hotplug_screen_on:hotplug_screen_off); // TODO need cpuset restored
+    //set_min_online_cpu(on==1?interactive_mincpu_on:0, -1);
 //    if(!on) set_min_freq(interactive_freq_off);
 }
 
@@ -135,8 +148,8 @@ int fd = -1;
     switch (hint) {
     case POWER_HINT_INTERACTION:
         // Boost to max lp frequency
-	set_min_freq(interactive_freq_on,  boost_time);
-	set_min_online_cpu(interactive_mincpu_on, boost_time);
+	//set_min_freq(interactive_freq_on,  boost_time);
+	//set_min_online_cpu(interactive_mincpu_on, boost_time);
         break;
 
     default:
