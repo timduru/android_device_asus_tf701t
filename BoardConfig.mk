@@ -25,6 +25,8 @@ BOARD_USES_GENERIC_AUDIO := false
 -include vendor/asus/tf701t/BoardConfigVendor.mk
 #include vendor/nvidia/build/definitions.mk
 
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+
 
 TARGET_SPECIFIC_HEADER_PATH := device/asus/tf701t/include
 
@@ -122,13 +124,13 @@ ARCH_ARM_HIGH_OPTIMIZATION := true
 #DEBUG_NO_STDCXX11 := yes
 #TARGET_BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
 CLANG_O3 := true
-STRICT_ALIASING := true
-GRAPHITE_OPTS := true
-ENABLE_GCCONLY := true
-USE_PIPE := true
-ENABLE_SANITIZE := true
-ENABLE_GOMP := true
-TARGET_GCC_VERSION_EXP := 5.4
+#STRICT_ALIASING := true
+#GRAPHITE_OPTS := true
+#ENABLE_GCCONLY := true
+#USE_PIPE := true
+#ENABLE_SANITIZE := true
+#ENABLE_GOMP := true
+#TARGET_GCC_VERSION_EXP := 5.4
 #TARGET_GCC_VERSION_ARM := 5.4
 
 ENABLE_CPUSETS := true

@@ -83,7 +83,6 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/wifi/firmware/bcm43341/fw_bcmdhd.bin:system/vendor/firmware/bcm43341/fw_bcmdhd.bin \
     device/asus/tf701t/wifi/firmware/bcm43341/fw_bcmdhd_p2p.bin:system/vendor/firmware/bcm43341/fw_bcmdhd_p2p.bin \
     device/asus/tf701t/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    device/asus/tf701t/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/asus/tf701t/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Power
@@ -179,7 +178,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ap.interface=wlan1 \
     ro.carrier=wifi-only \
     ro.sf.override_null_lcd_density = 1 \
-    persist.tegra.compositor=glcomposer \
     debug.hwui.render_dirty_regions=false \
     persist.tegra.nvmmlite = 1 \
     drm.service.enabled=true \
@@ -213,6 +211,8 @@ PRODUCT_PACKAGES += \
     hostapd \
     dhcpcd.conf \
     wpa_supplicant \
+    wpa_supplicant.conf
+
 
 
 PRODUCT_COPY_FILES += \

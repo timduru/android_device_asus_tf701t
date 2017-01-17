@@ -38,5 +38,6 @@
     <!-- Use hardware layers in recents -->
     <bool name="config_recents_use_hardware_layers">true</bool>
 
+    <string name="config_navBarLayout" translatable="false">back[0.5],home[0.5],recent[0.5];space;menu_ime[1.2],recent[0.5],switch_toprevious_task[0.5]</string>
 
 </resources>
