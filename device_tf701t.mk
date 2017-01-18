@@ -183,6 +183,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true \
     tf.enable=y
 
+# Aggresively optimize art for performance
+PRODUCT_PROPERTY_OVERRIDES += \
+    pm.dexopt.bg-dexopt=everything-profile \
+    pm.dexopt.ab-ota=everything-profile \
+    pm.dexopt.nsys-library=everything-profile \
+    pm.dexopt.core-app=everything-profile
+
 # Audio
 PRODUCT_PACKAGES += \
         audio.a2dp.default \
