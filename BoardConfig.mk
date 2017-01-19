@@ -20,6 +20,7 @@ DEVICE_PACKAGE_OVERLAYS += device/asus/tf701t/overlay
 # by BoardConfigVendor.mk
 USE_CAMERA_STUB := false
 BOARD_USES_GENERIC_AUDIO := false
+BOARD_AUDIORECORD_SKIP_GET_CAPTURE_POSITION := true
 
 # Use the non-open-source parts, if they're present
 -include vendor/asus/tf701t/BoardConfigVendor.mk
