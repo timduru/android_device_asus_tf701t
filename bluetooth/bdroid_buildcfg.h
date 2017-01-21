@@ -19,4 +19,6 @@
 
 #define BTM_DEF_LOCAL_NAME "Transformer Pad (TF701T)"
 
+#define KERNEL_MISSING_CLOCK_BOOTTIME_ALARM TRUE
+
 #endif
