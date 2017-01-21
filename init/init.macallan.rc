@@ -28,7 +28,6 @@ on init
     export TOUCH_DATA_DIR /persist/touch
 
     # Support legacy paths
-    symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
 
@@ -81,10 +80,12 @@ on post-fs-data
 on boot
 
     # update foreground cpuset now that processors are up
-    write /dev/cpuset/foreground/cpus 0-3
-    write /dev/cpuset/foreground/boost/cpus 0-3
-    write /dev/cpuset/background/cpus 3
-    write /dev/cpuset/system-background/cpus 2-3
+    write /dev/cpuset/foreground/cpus 0-2
+    write /dev/cpuset/foreground/boost/cpus 0-2
+    write /dev/cpuset/background/cpus 2
+    write /dev/cpuset/system-background/cpus 1-2
+    write /dev/cpuset/top-app/cpus 0-3
+
 
 
 # gps set GPIO 164(power pin)
@@ -570,6 +571,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
+    -O/data/misc/wifi/sockets \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
