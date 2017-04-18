@@ -175,6 +175,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
+# ro.product.first_api_level indicates the first api level the device has commercially launched on.
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.first_api_level=17
+
+
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     ap.interface=wlan1 \
