@@ -11,6 +11,8 @@ persist.logtool.gps.loglv=0
 ro.zygote.disable_gl_preload=true
 
 persist.external_drive_world_rw=1
+display.smart_dimmer=1
+
 
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
