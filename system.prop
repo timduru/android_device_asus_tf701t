@@ -17,3 +17,4 @@ display.smart_dimmer=1
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
 ro.boot.wificountrycode=JP
+ro.recents.grid=1
