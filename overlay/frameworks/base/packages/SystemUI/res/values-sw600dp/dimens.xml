@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <dimen name="unlock_move_distance">35dp</dimen>
+    <!-- Lockscreen unlocking falsing threshold. -->                                                                                                                                  
+    <dimen name="unlock_falsing_threshold">80dp</dimen>
+</resources>
